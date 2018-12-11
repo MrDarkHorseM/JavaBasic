@@ -5,6 +5,8 @@ public class Bike {
     public int wheelNum;
     public String seatShape;
 
+    public Bike(){};
+
     public Bike(int num, String wheelShape, String seatShape) {
         this.wheelNum = num;
     }

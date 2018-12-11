@@ -1,19 +1,11 @@
 package com.matianxing;
 
-public class Bicycle {
-    public String wheelShape;
-    public int wheelNum;
-    public String seatShape;
+public class Bicycle extends Bike {
     public int pedalNum;
 
-    public Bicycle(int num1, int num2, String wheelShape, String seatShape) {
-        this.wheelNum = num1;
-        this.pedalNum = num2;
-    }
-
-    public int getWheelNum() {
-        System.out.println("i am in the getWheelNum");
-        return this.wheelNum;
+    public Bicycle(int wn, int pn, String wheelShape, String seatShape) {
+        super(wn,wheelShape,seatShape);
+        this.pedalNum = pn;
     }
 
     public int getPedalNum() {
@@ -25,10 +17,10 @@ public class Bicycle {
         System.out.println("Hello World");
         Bicycle adultBicycle = new Bicycle(5, 9, "round", "chair");
         System.out.println(adultBicycle);
-        int num1 = adultBicycle.getWheelNum();
-        System.out.println(num1);
-        int num2 = adultBicycle.getPedalNum();
-        System.out.println(num2);
+        int wn = adultBicycle.getWheelNum();
+        System.out.println(wn);
+        int pn = adultBicycle.getPedalNum();
+        System.out.println(pn);
     }
 
 }
