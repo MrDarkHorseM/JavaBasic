@@ -3,6 +3,7 @@ package com.matianxing;
 public class Cup {
     public int handerNum;
     public int pouredAccumlator;
+
     public Cup(int num, String lid){
         this.handerNum = num;
     };
@@ -15,7 +16,6 @@ public class Cup {
         pouredAccumlator=pouredAccumlator+lit;
         System.out.println("I have poured "+lit+" water");
     }
-
     public int getPouredAccumlator(){
         return pouredAccumlator;
     }
