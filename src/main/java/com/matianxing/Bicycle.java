@@ -24,7 +24,6 @@ public class Bicycle {
     public static void main(String[] args) {
         System.out.println("Hello World");
         Bicycle adultBicycle = new Bicycle(5, 9, "round", "chair");
-//    String str="random";
         System.out.println(adultBicycle);
         int num1 = adultBicycle.getWheelNum();
         System.out.println(num1);

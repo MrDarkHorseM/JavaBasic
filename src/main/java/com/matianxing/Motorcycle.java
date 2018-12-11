@@ -26,7 +26,6 @@ public class Motorcycle {
     public static void main(String[] args) {
         System.out.println("Hello World");
         Motorcycle adultMotorcycle = new Motorcycle(5, 9, "round", "chair", "round", "Honda");
-//    String str="random";
         System.out.println(adultMotorcycle);
         int num1 = adultMotorcycle.getWheelNum();
         System.out.println(num1);
