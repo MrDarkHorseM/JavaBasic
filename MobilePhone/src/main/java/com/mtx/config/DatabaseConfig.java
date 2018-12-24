@@ -2,11 +2,15 @@ package com.mtx.config;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.jpa.HibernatePersistenceProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -17,18 +21,37 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
+//
+//public class DatabaseConfig {
+//    private final Logger logger = LoggerFactory.getLogger(getClass());
+//    @Autowired
+//    private Environment environment;
+//
+//
+//}
+//
+
+
 
 @Configuration
 //@EnableTransactionManagement
 //@EnableJpaRepositories(basePackages = "com.mtx.repository")
 public class DatabaseConfig {
-    protected String databaseUrl="jdbc:postgresql://localhost:5431/tianxingma";
+    private final Logger logger = LoggerFactory.getLogger(getClass());
+    @Autowired
+    private Environment environment;
 
-    protected String databaseUsername = "tian";
+    @Value("#{ applicationProperties[ 'database.serverName'] }")
+    protected String databaseUrl ;
 
-    protected String databasePassword = "123456";
+    @Value("#{ applicationProperties[ 'database.username'] }")
+    protected String databaseUsername ;
 
-    protected String driverClassName = "org.postgresql.ds.PGSimpleDataSource";
+    @Value("#{ applicationProperties[ 'database.password'] }")
+    protected String databasePassword ;
+
+    @Value("#{ applicationProperties[ 'database.dataSourceClassName'] }")
+    protected String driverClassName ;
 
     private BasicDataSource createDataSource() {
         BasicDataSource dataSource = new BasicDataSource();

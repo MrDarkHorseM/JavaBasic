@@ -16,7 +16,7 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy=SEQUENCE, generator="users_id_seq")
-    @SequenceGenerator(name="users_id_seq", sequenceName="users_id", allocationSize=1)
+    @SequenceGenerator(name="users_id_seq", sequenceName="users_id", allocationSize=1) //每次增加多少
     private Long id;
 
     @Column(name="username",unique = true)
@@ -26,8 +26,8 @@ public class User implements Serializable {
     private String firstname;
 
 
-    @Column(name ="last_name")
-    private String lastname;
+    @Column(name ="last_name") //all capital or _
+    private String lastname; // camelcase
 
     @Column(unique = true)
     @NotNull
@@ -51,11 +51,9 @@ public class User implements Serializable {
     public void setLastname(String lastname) { this.lastname = lastname;}
 
     public String getEmail() { return email;}
-    public void setEmial(String email) { this.email = email;}
+    public void setEmail(String email) { this.email = email;}
 
     public String getPassword() {return password;}
-    public void setPassword(String password) { this.password = password;}
-
-
+    public void setPassword(String password) { this.password = password;} //incapsulation
 
 }
