@@ -9,7 +9,7 @@ public class Bike {
 
     public Bike(int num, String wheelShape, String seatShape) {
         this.wheelNum = num;
-    }
+    } //this means set value;
 
     public int getWheelNum() {
         System.out.println("i am in the getWheelNum");
