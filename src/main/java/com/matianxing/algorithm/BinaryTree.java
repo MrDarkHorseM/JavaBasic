@@ -8,30 +8,6 @@ import java.util.Queue;
 
 public class BinaryTree {
 
-//        public List<Integer> largestValues(TreeNode root) {
-//            Queue<TreeNode> queue = new LinkedList<TreeNode>();
-//
-//            List<Integer> res = new LinkedList<Integer>();
-//            if (root == null) return res;
-//
-//            queue.offer(root);
-//            while (!queue.isEmpty()) {
-//                int levelNum = queue.size();
-//                int temp = queue.peek().val;
-//                if (queue.peek().left != null) queue.offer(queue.peek().left);
-//                if (queue.peek().right != null) queue.offer(queue.peek().right);
-//                queue.poll();
-//                for (int i = 1; i < levelNum; i++) {
-//                    if (queue.peek().val > temp) temp = queue.peek().val;
-//                    if (queue.peek().left != null) queue.offer(queue.peek().left);
-//                    if (queue.peek().right != null) queue.offer(queue.peek().right);
-//                    queue.poll();
-//                }
-//                res.add(temp);
-//            }
-//            return res;
-//        }
-
     public static List<Integer> largestValues(TreeNode root) {
 
         Queue<TreeNode> queue = new LinkedList<>();
@@ -42,19 +18,29 @@ public class BinaryTree {
         queue.offer(root);
         while (!queue.isEmpty()) {
             int levelNum = queue.size();
-            int temp = queue.peek().val;
+            int temp = queue.peek().val; //return the first element.
 
-            if (queue.peek().left != null) queue.offer(queue.peek().left);
-            if (queue.peek().right != null) queue.offer(queue.peek().right);
 
-            queue.poll();
+            TreeNode firstNode = queue.poll();
+            if (firstNode.left != null) queue.offer(firstNode.left);
+            if (firstNode.right != null) queue.offer(firstNode.right);
+//            if (queue.peek().left != null) queue.offer(queue.peek().left);
+//            if (queue.peek().right != null) queue.offer(queue.peek().right);
+//
+//
+//            queue.poll(); //return the first element, then delete it.
 
             for (int i = 1; i < levelNum; i++) {
-                if (queue.peek().val > temp) temp = queue.peek().val;
-                if (queue.peek().left != null) queue.offer(queue.peek().left);
-                if (queue.peek().right != null) queue.offer(queue.peek().right);
-                queue.poll();
+                TreeNode tempNode = queue.poll();
+                if (tempNode.val > temp) temp = tempNode.val;
+                if (tempNode.left != null) queue.offer(tempNode.left);
+                if (tempNode.right != null) queue.offer(tempNode.right);
+//                if (queue.peek().val > temp) temp = queue.peek().val;
+//                if (queue.peek().left != null) queue.offer(queue.peek().left);
+//                if (queue.peek().right != null) queue.offer(queue.peek().right);
+//                queue.poll();
             }
+
             res.add(temp);
         }
         System.out.println(res);
@@ -67,9 +53,9 @@ public class BinaryTree {
 
         TreeNode l = new TreeNode(3);
 
-        TreeNode r = new TreeNode(7);
-
         root.left = l;
+
+        TreeNode r = new TreeNode(7);
 
         root.right = r;
 
@@ -83,15 +69,15 @@ public class BinaryTree {
 
         TreeNode rl = new TreeNode(9);
 
-        r.right = rl;
+        r.left = rl;
 
         TreeNode rr = new TreeNode(10);
+
+        r.right = rr;
 
         largestValues(root);
 
     }
-
-
 
 }
 
