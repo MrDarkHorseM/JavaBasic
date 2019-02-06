@@ -8,5 +8,5 @@ public class TreeNode {
 
     public TreeNode right;
 
-    public TreeNode (int x){val = x;} //why define this method?
+    public TreeNode (int x){val = x;} //why define this method? constructor.
 }
